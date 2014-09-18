@@ -46,8 +46,8 @@
       <file leaf-file-name="map.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/map.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9638989" vertical-offset="54" max-vertical-offset="2805">
-              <caret line="57" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.07220217" vertical-offset="0" max-vertical-offset="1245">
+              <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -618,12 +618,12 @@
       <workItem from="1410965626436" duration="2035000" />
       <workItem from="1411031932295" duration="5025000" />
       <workItem from="1411045032181" duration="4113000" />
-      <workItem from="1411049313762" duration="3997000" />
+      <workItem from="1411049313762" duration="4062000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15886000" />
+    <option name="totallyTimeSpent" value="15951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="973" extended-state="6" />
@@ -915,8 +915,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/map.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9638989" vertical-offset="54" max-vertical-offset="2805">
-          <caret line="57" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.07220217" vertical-offset="0" max-vertical-offset="1245">
+          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
           <folding />
         </state>
       </provider>
