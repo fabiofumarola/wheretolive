@@ -2,9 +2,18 @@
 body {
   padding-top: 70px;
   padding-bottom: 20px;
+  background: #F2F2F2;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
+.post, .comments {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 1px 1px #aaa;
+    padding: 3em;
+    margin: 2em auto;
+}
+
+ /*Everything but the jumbotron gets side spacing for mobile first views*/
 .header,
 .marketing,
 .footer {
@@ -16,7 +25,7 @@ body {
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
-/* Make the masthead heading the same height as the navigation */
+ /*Make the masthead heading the same height as the navigation*/
 .header h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -33,9 +42,9 @@ body {
 
 /* Customize container */
 @media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+  /*.container {*/
+    /*max-width: 730px;*/
+  /*}*/
 }
 .container-narrow > hr {
   margin: 30px 0;
@@ -51,7 +60,7 @@ body {
   padding: 14px 24px;
 }
 
-/* Supporting marketing content */
+ /*Supporting marketing content*/
 .marketing {
   margin: 40px 0;
 }
