@@ -20,11 +20,10 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="top">
+        <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -32,34 +31,28 @@
                 </button>
                 <a class="navbar-brand" href="#">WhereToLive</a>
             </div>
-            <div class="navbar-collapse collapse" data-toggle="collapse" data-target=".navbar-collapse">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="divider"></li>
                     <li class=""><a href="#news">Ultime News</a></li>
-                    <li class=""><a href="#map">Crime Map</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cerca per <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Reato</a></li>
-                            <li><a href="#">Citta'</a></li>
-                            <li class="divider"></li>
-                            <!--<li class="dropdown-header">Nav header</li>-->
-                            <!--<li><a href="#">Separated link</a></li>-->
-                            <!--<li><a href="#">One more separated link</a></li>-->
-                        </ul>
-                    </li>
-                    <li><a href="#about">Statistiche Criminalità</a></li>
-                    <li><a href="#contact">Contatti</a></li>
+                    <li class=""><a href="#crimap">Crime Map</a></li>
+                    <li class=""><a href="#search">Ricerca</a></li>
+                    <li class=""><a href="#analytics">Analytics</a></li>
+                    <li class=""><a href="#about">About</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <!--<form class="navbar-form navbar-left" role="search">-->
+                        <!--<div class="form-group">-->
+                            <!--<input type="text" class="form-control" placeholder="Search">-->
+                        <!--</div>-->
+                        <!--<button type="submit" class="btn btn-default">Submit</button>-->
+                    <!--</form>-->
+                    <li><a href="#login">Login</a></li>
                 </ul>
-                    <ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
-                        <li><a href="#login">Login</a></li>
-                    </ul>
-
-            </div><!--/.nav-collapse -->
-    </div>
-
-
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
 
     <div class="container-fluid">
       <div ng-view=""></div>
@@ -88,7 +81,7 @@
     <![endif]-->
     <!-- endbuild -->
 
-    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src='http://maps.googleapis.com/maps/api/js?sensor=false'></script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -110,6 +103,10 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/news.js"></script>
+        <script src="scripts/controllers/analytics.js"></script>
+        <script src="scripts/controllers/crimap.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/search.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -28,13 +28,25 @@ angular
         templateUrl: 'views/news.html',
         controller: 'NewsCtrl'
       })
-      .when('/map', {
-        templateUrl: 'views/map.html',
-        controller: 'MainCtrl'
+      .when('/crimap', {
+        templateUrl: 'views/crimap.html',
+        controller: 'CrimapCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/analytics', {
+            templateUrl: 'views/analytics.html',
+            controller: 'AnalyticsCtrl'
+      })
+      .when('/login', {
+            templateUrl: 'views/login.html',
+            controller: 'LoginCtrl'
+      })
+      .when('/search', {
+            templateUrl: 'views/search.html',
+            controller: 'SearchCtrl'
       })
       .otherwise({
         redirectTo: '/'

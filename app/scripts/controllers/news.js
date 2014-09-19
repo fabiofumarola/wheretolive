@@ -8,7 +8,7 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-  .controller('NewsCtrl', function ($scope) {
+  .controller('NewsCtrl', ['$scope', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -17,9 +17,15 @@ angular.module('wheretoliveApp')
 
     $scope.map = {
         center: {
-            latitude: '41',
+            latitude: '51',
             longitude: '16'
         },
         zoom: 8
     };
-  });
+
+//     $scope.getLatestNews = function(){
+//
+//    }
+
+
+  }]);
