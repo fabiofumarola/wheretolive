@@ -22,7 +22,7 @@
 
     <!-- Add your site or application content here -->
     <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="top">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -35,25 +35,25 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="divider"></li>
-                    <li class=""><a href="#news">Ultime News</a></li>
-                    <li class=""><a href="#map">Crime Map</a></li>
+                    <li class=""><a data-toggle="collapse" data-target=".navbar-collapse" href="#news">Ultime News</a></li>
+                    <li class=""><a data-toggle="collapse" data-target=".navbar-collapse" href="#map">Crime Map</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cerca per <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Reato</a></li>
-                            <li><a href="#">Citta'</a></li>
+                            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#">Reato</a></li>
+                            <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#">Citta'</a></li>
                             <li class="divider"></li>
                             <!--<li class="dropdown-header">Nav header</li>-->
                             <!--<li><a href="#">Separated link</a></li>-->
                             <!--<li><a href="#">One more separated link</a></li>-->
                         </ul>
                     </li>
-                    <li><a href="#about">Statistiche Criminalità</a></li>
-                    <li><a href="#contact">Contatti</a></li>
+                    <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#about">Statistiche Criminalità</a></li>
+                    <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#contact">Contatti</a></li>
                 </ul>
                 </ul>
                     <ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
-                        <li><a href="#login">Login</a></li>
+                        <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#login">Login</a></li>
                     </ul>
 
             </div><!--/.nav-collapse -->
@@ -62,11 +62,10 @@
 
 
     <div class="container-fluid">
-
       <div ng-view=""></div>
 
       <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p>With <span class="glyphicon glyphicon-heart"></span> from the <a ng-href="http://datatoknowledge.it/">DataToKnowledge</a> team</p>
       </div>
     </div>
 
