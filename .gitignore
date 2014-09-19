@@ -7,6 +7,8 @@ bower_components
 logs
 *.log
 
+.idea
+
 # Runtime data
 pids
 *.pid
