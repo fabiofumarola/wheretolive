@@ -7,11 +7,17 @@
  * # MainCtrl
  * Controller of the wheretoliveApp
  */
-angular.module('wheretoliveApp')
-  .controller('MainCtrl', function ($scope) {
+var app = angular.module('wheretoliveApp');
+app.controller('MainCtrl', ['$scope', function($scope){
     $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+        'HTML5 Boilerplate',
+        'AngularJS',
+        'Karma'
     ];
-  });
+
+
+
+}]);
+
+
+
