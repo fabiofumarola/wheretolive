@@ -3,14 +3,36 @@ body {
   padding-top: 70px;
   padding-bottom: 20px;
   background: #F2F2F2;
+  height: 100%;
+  max-height: 100%;
+  /*overflow: hidden;*/
 }
 
 .post, .comments {
     background: #fff;
-    border-radius: 3px;
+    border-radius: 2px;
     box-shadow: 0px 1px 1px #aaa;
-    padding: 3em;
-    margin: 2em auto;
+    padding: 2em;
+    margin: 1em auto;
+}
+
+#my-element {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+}
+
+.angular-google-map-container {
+    height: 800px;
+
+    /*height: calc(100% - 0);*/
+    /*position: absolute;*/
+    /*right: 16px;*/
+    /*top: 50px;*/
+    /*bottom: 0;*/
+    /*overflow: hidden;*/
+
 }
 
  /*Everything but the jumbotron gets side spacing for mobile first views*/

@@ -22,8 +22,7 @@
 
     <!-- Add your site or application content here -->
     <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -33,8 +32,9 @@
                 </button>
                 <a class="navbar-brand" href="#">WhereToLive</a>
             </div>
-            <div class="navbar-collapse collapse navbar-right">
+            <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li class="divider"></li>
                     <li class=""><a href="#news">Ultime News</a></li>
                     <li class=""><a href="#map">Crime Map</a></li>
                     <li class="dropdown">
@@ -51,13 +51,12 @@
                     <li><a href="#about">Statistiche Criminalità</a></li>
                     <li><a href="#contact">Contatti</a></li>
                 </ul>
-                <!--<ul class="nav navbar-nav navbar-right">-->
-                    <!--<li><a href="../navbar/">Default</a></li>-->
-                    <!--<li><a href="../navbar-static-top/">Static top</a></li>-->
-                    <!--<li class="active"><a href="./">Fixed top</a></li>-->
-                <!--</ul>-->
+                </ul>
+                    <ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
+                        <li><a href="#login">Login</a></li>
+                    </ul>
+
             </div><!--/.nav-collapse -->
-        </div>
     </div>
 
 
@@ -90,6 +89,7 @@
     <![endif]-->
     <!-- endbuild -->
 
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -101,6 +101,8 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -108,6 +110,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/news.js"></script>
         <!-- endbuild -->
 </body>
 </html>

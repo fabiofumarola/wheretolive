@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'google-maps'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -25,7 +26,7 @@ angular
       })
       .when('/news', {
         templateUrl: 'views/news.html',
-        controller: 'MainCtrl'
+        controller: 'NewsCtrl'
       })
       .when('/map', {
         templateUrl: 'views/map.html',
