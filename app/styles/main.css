@@ -30,7 +30,7 @@ body {
 }
 
 .scrollit {
-    width: 50%;
+    /*width: 50%;*/
     height:800px;
     overflow-y:scroll;
 }
