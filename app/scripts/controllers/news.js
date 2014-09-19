@@ -25,7 +25,7 @@ angular.module('wheretoliveApp')
                 latitude: '41',
                 longitude: '16'
             },
-            zoom: 12
+            zoom: 8
         };
 
 
@@ -35,13 +35,13 @@ angular.module('wheretoliveApp')
         $scope.getCurrentPosition = function () {
             window.navigator.geolocation.getCurrentPosition(function (position) {
                 $scope.$apply(function () {
-                    console.log('Current position', position);
+                    //console.log('Current position', position);
                     $scope.position = position;
 
 
                     $scope.map = {
                         center: $scope.position.coords,
-                        zoom: 12
+                        zoom: 8
                     };
 
                 });
@@ -58,8 +58,8 @@ angular.module('wheretoliveApp')
                 //$rootScope.results = data.data.hits.total;
                 //setDivResult();
                 //normalizeTagsSize($scope.newsArray);
-                console.log("News", $scope.newsArray);
-                //setMarkersNews($scope.newsArray);
+                //console.log("News", $scope.newsArray);
+                setMarkersNews($scope.newsArray);
 
 
                 //$scope.paginationRange = Pagination.range();
@@ -75,6 +75,36 @@ angular.module('wheretoliveApp')
             var l = document.createElement("a");
             l.href = href;
             return l.hostname;
+        };
+
+
+        /*
+         Setta per ogni posizione un marker google-maps
+         */
+        var setMarkersNews = function (jsonData) {
+
+            //creo l'array dei markers a partire dal json
+            var markers = new Array();
+
+            var count = 0;
+            for (var i = 0; i < jsonData.length; i++) {
+
+                for (var p = 0; p < jsonData[i]._source.positions.length; p++) {
+                    // console.log("mi sa che qui non entro");
+                    var newMarker = {
+                        id: parseInt(count),
+                        latitude: parseFloat(jsonData[i]._source.positions[p].lat),
+                        longitude: parseFloat(jsonData[i]._source.positions[p].lon),
+                        showWindow: true,
+                        title: 'Marker' + i
+                    };
+                    // console.log(newMarker.latitude + '--' + newMarker.longitude);
+                    markers.push(newMarker);
+                    count++;
+                }
+            }
+            //console.log("Trovati "+count+ " markers");
+            $scope.markers = markers;
         };
 
         /*

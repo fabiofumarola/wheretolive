@@ -98,7 +98,7 @@ var app =angular.module('wheretoliveApp');
 
           query.size = size;
           query.from = from;
-          console.log("query getLastNews: ",query);
+         // console.log("query getLastNews: ",query);
           return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
               return data;
           });

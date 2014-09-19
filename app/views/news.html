@@ -34,7 +34,10 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <div class="col-lg-6 fixed" style="padding-top: 15px;">
-            <google-map center="map.center" zoom="map.zoom" draggable="true"></google-map>
+            <google-map center="map.center" zoom="map.zoom" draggable="true">
+                <markers models="markers" coords="'self'" doCluster=true click="'onClicked'">
+                </markers>
+            </google-map>
         </div>
     </div>
 </div>
