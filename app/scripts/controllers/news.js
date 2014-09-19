@@ -8,7 +8,7 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-    .controller('NewsCtrl', ['$scope', function ($scope) {
+    .controller('NewsCtrl', ['$scope', 'Search', function ($scope, Search) {
         //secondo me questo non serve
         $scope.awesomeThings = [
             'HTML5 Boilerplate',
@@ -50,16 +50,42 @@ angular.module('wheretoliveApp')
             });
         };
 
+        $scope.getLatestNews = function() {
+            //var from = $scope.querySize * $scope.paginationService.getCurrentPage();
+                var from =0;
+            Search.getLastNews($scope.querySize, from).then(function (data) {
+                $scope.newsArray = data.data.hits.hits;
+                //$rootScope.results = data.data.hits.total;
+                //setDivResult();
+                //normalizeTagsSize($scope.newsArray);
+                console.log("News", $scope.newsArray);
+                //setMarkersNews($scope.newsArray);
+
+
+                //$scope.paginationRange = Pagination.range();
+            });
+        };
+
+
+        /*
+         Data l'url di una news, restituisce il suo hostname
+         */
+        $scope.getHostname = function (href) {
+            // console.log("entrato inGetLocation", href);
+            var l = document.createElement("a");
+            l.href = href;
+            return l.hostname;
+        };
+
         /*
          Init è una funzione speciale che viene richiamata ad ogni refresh della pagina.
          Chiamata in news.html
          */
         $scope.init = function () {
             $scope.getCurrentPosition();
+            $scope.getLatestNews();
         };
-//     $scope.getLatestNews = function(){
-//
-//    }
+
 
 
     }]);
