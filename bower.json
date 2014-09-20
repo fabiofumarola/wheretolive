@@ -12,7 +12,9 @@
     "angular-animate": "~1.2.0",
     "angular-touch": "~1.2.0",
     "angular-route": "~1.2.0",
-    "angular-google-maps": "~1.2.1"
+    "angular-google-maps": "~1.2.1",
+    "font-awesome": "~4.2.0",
+    "ng-slider": "~0.1.4"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",

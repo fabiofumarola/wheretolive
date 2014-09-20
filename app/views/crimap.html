@@ -1,6 +1,113 @@
-<p>This is the crimap view.</p>
 <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <form action="" class="form">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="email" placeholder="Digita il nome di una città....">
+                    <div class="input-group-addon"><i class="fa fa-search" style="cursor: pointer" title="Avvia la ricerca"></i>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                          Filtra per crimine
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 1
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 2
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 3
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 4
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 5
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 6
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 7
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 8
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 9
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 10
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 111
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" value="">Crimine 12
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <legend>Periodo di interesse</legend>
+        <input ng-model="value" type="text" id="fromCrime" slider options="options" />
+    </div>
+</div>
+<hr>
+<div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <google-map center="map.center" zoom="map.zoom" draggable="true">
             <markers models="markers" coords="'self'" doCluster=true click="'onClicked'">

@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'google-maps'
+    'google-maps',
+    'ngSlider'
   ])
   .config(function ($routeProvider) {
     $routeProvider
