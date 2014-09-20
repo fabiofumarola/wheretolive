@@ -9,14 +9,6 @@
  */
 angular.module('wheretoliveApp')
     .controller('NewsCtrl', ['$scope', 'Search', function ($scope, Search) {
-        //secondo me questo non serve
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
-
-
         /*
          Posizione di default  Palazzo San Gervaso
          */
