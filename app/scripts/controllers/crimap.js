@@ -8,15 +8,21 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-    .controller('CrimapCtrl', ['$scope', 'Search', function ($scope, Search) {
-        /*
+    .controller('CrimapCtrl', ['$scope', 'Search',
+        function ($scope, Search) {
+            /*
          Posizione di default  Palazzo San Gervaso
          */
-        $scope.map = {
-            center: {
-                latitude: '41',
-                longitude: '16'
-            },
-            zoom: 8
-        };
+            console.log(Search);
+            $scope.map = {
+                center: {
+                    latitude: '41',
+                    longitude: '16'
+                },
+                zoom: 8
+            };
+
+            $scope.options = {
+                value: 10
+            };
   }]);
