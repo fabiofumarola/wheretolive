@@ -9,6 +9,57 @@
  */
 angular.module('wheretoliveApp')
     .controller('NewsCtrl', ['$scope', 'Search', function ($scope, Search) {
+
+        $scope.paginationCurrentPage = 0;
+        var paginationPageSize = 15;
+        var paginationPageCount = Math.ceil($scope.results / paginationPageSize) - 1;
+
+
+        $scope.paginationGetRange = function () {
+            var rangeSize = 5;
+            var ps = [];
+            var start;
+            start = $scope.paginationCurrentPage;
+            //  console.log("In range(): pageCount(): "+this.pageCount());
+            if (start > paginationPageCount - rangeSize) {
+                start = paginationPageCount - rangeSize + 1;
+            }
+
+            for (var i = start; i < start + rangeSize; i++) {
+
+                if (i >= 0)
+                    ps.push(i);
+
+            }
+            // console.log("Entrato in range()", ps);
+            return ps;
+
+        };
+
+        var paginationSetCurrentPage = function (newPage) {
+            console.log("Entrato in setCurrentPage()", newPage);
+            $scope.paginationCurrentPage = newPage;
+        };
+
+        $scope.disablePrevPage = function(){
+            return $scope.paginationCurrentPage === 0 ;
+        };
+
+        $scope.disableNextPage = function(){
+            var res = ($scope.paginationCurrentPage === paginationPageCount) ||( paginationPageCount=== -1);
+            //console.log("Disable: "+ res);
+            return res;
+        };
+
+
+        $scope.updateSearch = function(newPage){
+            paginationSetCurrentPage(newPage);
+            $scope.getLatestNews();
+            $('html,body, div.scrollit').animate({scrollTop:0},'slow')
+        };
+
+
+
         /*
          Posizione di default  Palazzo San Gervaso
          */
@@ -42,15 +93,16 @@ angular.module('wheretoliveApp')
             });
         };
 
-        $scope.getLatestNews = function() {
-            //var from = $scope.querySize * $scope.paginationService.getCurrentPage();
-                var from =0;
+        $scope.getLatestNews = function () {
+            var from = paginationPageSize * $scope.paginationCurrentPage;
+            //var from = 0;
+            console.log("GetLatestNews FROM: "+from);
             Search.getLastNews($scope.querySize, from).then(function (data) {
                 $scope.newsArray = data.data.hits.hits;
-                //$rootScope.results = data.data.hits.total;
+                $scope.results = data.data.hits.total;
                 //setDivResult();
                 //normalizeTagsSize($scope.newsArray);
-                //console.log("News", $scope.newsArray);
+                console.log("News", $scope.newsArray);
                 setMarkersNews($scope.newsArray);
 
 
@@ -107,7 +159,6 @@ angular.module('wheretoliveApp')
             $scope.getCurrentPosition();
             $scope.getLatestNews();
         };
-
 
 
     }]);
