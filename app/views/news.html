@@ -22,13 +22,18 @@
 
         <div class="row row-centered">
             <ul class="pagination">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
+                <li ng-hide="disablePrevPage()">
+                    <a href ng-click="updateSearch((paginationCurrentPage-1))">&laquo;</a>
+                </li>
+                <li ng-repeat="n in paginationGetRange()"
+                    ng-class="{active: n == paginationCurrentPage}"
+                        >
+                    <a href ng-click="updateSearch(n)">{{n+1}}</a>
+                </li>
+                <li ng-hide="disableNextPage()">
+                    <a href ng-click="updateSearch((paginationCurrentPage+1))">&raquo;</a>
+                </li>
+
             </ul>
         </div>
     </div>
