@@ -37,20 +37,20 @@ angular
         controller: 'AboutCtrl'
       })
       .when('/analytics', {
-            templateUrl: 'views/analytics.html',
-            controller: 'AnalyticsCtrl'
+        templateUrl: 'views/analytics.html',
+        controller: 'AnalyticsCtrl'
       })
       .when('/login', {
-            templateUrl: 'views/login.html',
-            controller: 'LoginCtrl'
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       })
       .when('/search', {
-            templateUrl: 'views/search.html',
-            controller: 'SearchCtrl'
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl'
       })
       .when('/tips', {
-            templateUrl: 'views/tips.html',
-            controller: 'TipsCtrl'
+        templateUrl: 'views/tips.html',
+        controller: 'TipsCtrl'
       })
       .otherwise({
         redirectTo: '/'
