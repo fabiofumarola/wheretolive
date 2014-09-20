@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 scrollit">
         <section class="post" ng-repeat="news in newsArray">
-            <header class="entry-header row">
+            <header class="entry-header row" id="{{news._id}}">
                 <!--div class="col-xs-12 col-sm-12 col-md-4 col-lg-3">
                     <img class="entry-avatar" alt="Paul Laros" height="80" width="120" src="http://www.wheretolive.it/images/corrieresalentino.jpg">
                 </div-->
@@ -40,7 +40,7 @@
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <div class="col-lg-6 fixed" style="padding-top: 15px;">
             <google-map center="map.center" zoom="map.zoom" draggable="true">
-                <markers models="markers" coords="'self'" doCluster=true click="'onClicked'">
+                <markers models="markers" coords="'self'" doCluster=true click="'onClicked'" options="'options'" events="markersEvents">
                 </markers>
             </google-map>
         </div>

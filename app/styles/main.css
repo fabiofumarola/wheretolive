@@ -16,6 +16,14 @@ body {
     margin: 1em auto;
 }
 
+.highlightPost{
+    background: #ff0000;
+    border-radius: 2px;
+    box-shadow: 0px 1px 1px #aaa;
+    padding: 2em;
+    margin: 1em auto;
+}
+
 #my-element {
     position: fixed;
     bottom: 100px;
