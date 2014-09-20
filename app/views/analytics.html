@@ -1798,7 +1798,8 @@ $(function() {
         xaxis: {
             tickFormatter: function() {
                 return "";
-            }
+            },
+            timezone: "browser"
         },
         yaxis: {
             min: 0,
@@ -1833,7 +1834,8 @@ $(function() {
         xaxis: {
             mode: "time",
             timeformat: "%m/%d",
-            minTickSize: [1, "day"]
+            minTickSize: [1, "day"],
+            timezone: "browser"
         },
         grid: {
             hoverable: true
