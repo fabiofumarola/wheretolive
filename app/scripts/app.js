@@ -48,6 +48,10 @@ angular
             templateUrl: 'views/search.html',
             controller: 'SearchCtrl'
       })
+      .when('/tips', {
+            templateUrl: 'views/tips.html',
+            controller: 'TipsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
