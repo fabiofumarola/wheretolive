@@ -77,16 +77,16 @@ angular.module('wheretoliveApp')
                 if (model.$id) {
                     //model = model.coords;//use scope portion then
                 }
-                console.log("Sto cliccando " + model.id + "--" + model.title);
+                //console.log("Sto cliccando " + model.id + "--" + model.title);
                 //alert("Model: event:" + eventName + "gMarker: " +gMarker+" "+ JSON.stringify(model));
                 var idNews = model.id.split("/")[0];
-                console.log(idNews);
+               // console.log(idNews);
 
 
 
                 $("#" + lastMarkerIdHighlight).removeClass("highlightPost");
                 $("#" + idNews).addClass("highlightPost");
-                console.log(lastMarkerIdHighlight);
+               // console.log(lastMarkerIdHighlight);
 
                 // $('html,body, div.scrollit').animate({scrollTop:0},'slow')
 
