@@ -1,4 +1,5 @@
-arrest0,6847
+crimine,count
+arresto,6847
 carcerazione,6461
 accuse,6305
 sequestro,5501
