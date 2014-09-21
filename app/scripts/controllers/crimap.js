@@ -8,8 +8,8 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-    .controller('CrimapCtrl', ['$scope', 'Search', 
-        function ($scope, Search) {
+    .controller('CrimapCtrl', ['$scope', 'Search',
+        function ($scope, Search){
             /*
              Posizione di default  Palazzo San Gervaso
              */
@@ -33,12 +33,6 @@ angular.module('wheretoliveApp')
                 console.log($scope.city);
             };
 
-            $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
-                var location = $scope.city.getPlace().geometry.location;
-                $scope.lat = location.lat();
-                $scope.lng = location.lng();
-                $scope.$apply();
-                console.log("Lat: "+$scope.lat+"--Lng"+$scope.lng);
-            });
+
 
         }]);

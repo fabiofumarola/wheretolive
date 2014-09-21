@@ -13,7 +13,8 @@
         "angular-touch": "~1.2.0",
         "angular-route": "~1.2.0",
         "angular-google-maps": "~1.2.1",
-        "font-awesome": "~4.2.0"
+        "font-awesome": "~4.2.0",
+        "ngAutocomplete": "~1.0.0"
 
 
     },
