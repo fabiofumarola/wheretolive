@@ -62,7 +62,7 @@ angular.module('wheretoliveApp')
         ];
 
             /** TOP CRIME **/
-            $scope.topCrime = {};
+            $scope.topCrimes = {};
 
             $scope.topCrimeChartType = 'bar';
             $scope.topCrimeConfig = {
@@ -94,12 +94,20 @@ angular.module('wheretoliveApp')
                 legend: {
                     toggle: true,
                     highlight: true
-                }
+                },
+                hover: {
+                        xFormatter: function(x) {
+                            return 'Istante temporale' + x;
+                        },
+                        yFormatter: function(y) {
+                            return 'Numero di documenti che ne parlano' + y;
+                        }
+                    }
             };
 
             $scope.topDayCrimeChartType = 'line';
             $scope.topCrymeDayOptions = {
-                renderer: 'area',
+                renderer: 'line',
                 stroke: true,
                 preserve: true
             };
@@ -212,9 +220,9 @@ angular.module('wheretoliveApp')
                         x.push(res1[i].key);
                         y.push(res1[i].doc_count); //jshint ignore:line
                     }
-                    $scope.topCrime.series = x;
-                    $scope.topCrime.data = [{
-                        x: 'Top Crimini',
+                    $scope.topCrimes.series = x;
+                    $scope.topCrimes.data = [{
+                        x: 'Crimini',
                         y: y
                     }];
 
@@ -266,7 +274,7 @@ angular.module('wheretoliveApp')
                     var i = 0;
                     var j = 0;
                     //for (i = 0; i < result.length; i++){
-                        var crimeArray = result[10];
+                        var crimeArray = result[2];
                         var crime = crimeArray.key;
                         var valuesArray = crimeArray.day_histogram.buckets;
                         var arrayXY = []
@@ -280,10 +288,10 @@ angular.module('wheretoliveApp')
                         }
                         array.push({
                             name: crime,
+                            color: 'lightblue',
                             data: arrayXY
                         });
                     //}
-                    console.log(array);
                     $scope.topCrymeDaySeries = array;
                 });
             }
