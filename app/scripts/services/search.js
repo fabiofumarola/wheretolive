@@ -10,6 +10,11 @@
 var app = angular.module('wheretoliveApp');
 app.service('Search', ['$http', function ($http) {
 
+
+
+
+
+
     this.searchFullText = function (queryText, size, from) {
         var queryAllMatch = {
             "size": "",
@@ -44,6 +49,37 @@ app.service('Search', ['$http', function ($http) {
         queryAllMatch.size = size;
         queryAllMatch.from = from;
         return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', queryAllMatch).success(function (data) {
+            return data;
+        });
+
+    };
+
+    this.getLastCrimeNews = function(){
+
+        var query = {
+            "query": {
+                "filtered": {
+                    "query": {
+                        "match_all": {
+                        }
+                    },
+                    "filter": {
+                        "exists": {
+                            "field": "crime"
+                        }
+                    }
+                }
+            },
+            "sort": [
+                {
+                    "date": {
+                        "order": "desc"
+                    }
+                }
+            ]
+        };
+
+        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
             return data;
         });
 

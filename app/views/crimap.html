@@ -20,7 +20,7 @@
     <div class="row-pad-15">
         <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
             <google-map center="map.center" zoom="map.zoom" draggable="true">
-                <markers models="markers" coords="'self'" doCluster=true click="'onClicked'">
+                <markers models="markers" coords="'self'" doCluster=true click="'onClicked' ">
                 </markers>
             </google-map>
         </div>
@@ -29,7 +29,7 @@
             <div class="panel-body" ng-repeat="crime in crimesList" style="padding: 0">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="{{crime.crimine}}">{{crime.crimine}}
+                        <input   type="checkbox" value="{{crime}}" checked >{{crime}}
                     </label>
                 </div>
             </div>
