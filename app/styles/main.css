@@ -361,3 +361,18 @@ ul.alert-dropdown {
     color: white;
     background-color: #149c82;
 }
+
+.topCrimeChart {
+    width: 100%;
+    height: 500px;
+}
+
+.topDayCrimeChart {
+    width: 100%;
+    height: 300px;
+}
+
+.topDayNewspaperChart{
+    width: 100%;
+    height: 300px;
+}

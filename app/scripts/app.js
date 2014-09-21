@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'google-maps',
-    'angularCharts'
+    'angularCharts',
+    'angular-rickshaw'
   ])
   .config(function ($routeProvider) {
     $routeProvider

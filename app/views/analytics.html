@@ -75,7 +75,7 @@
                 <h3 class="panel-title"><i class="fi flaticon-motorcyclists fi-2x"></i> Top crimini</h3>
             </div>
             <div class="panel-body">
-                <div id="morris-donut-chart"></div>
+                <div ac-chart="topCrimeChartType" ac-data="topCrime" ac-config="topCrimeConfig" id='topCrime' class='topCrimeChart'></div>
             </div>
         </div>
     </div>
@@ -89,7 +89,6 @@
                     <a href="" class="list-group-item" ng-repeat="newspaper in newspapers">
                         {{newspaper.titolo}}
                     </a>
-
                 </div>
             </div>
         </div>
@@ -103,7 +102,8 @@
                     <h3 class="panel-title"><i class="fa flaticon-criminal35 fi-2x"></i> Top crimini per giorno</h3>
                 </div>
                 <div class="panel-body">
-                    <div id="topDayCrime"></div>
+                    <rickshaw rickshaw-options="topCrymeDayOptions" rickshaw-features="topCrymeDayFeatures" rickshaw-series="topCrymeDaySeries">
+                    </rickshaw>
                 </div>
             </div>
         </div>
@@ -118,7 +118,8 @@
                     <h3 class="panel-title"><i class="fa fa-newspaper-o fa-fw"></i> Top giornali per giorno</h3>
                 </div>
                 <div class="panel-body">
-                    <div id="topDayNewspaper"></div>
+                    <rickshaw rickshaw-options="topDayNewspaperOptions" rickshaw-features="topNewspaperDayFeatures" rickshaw-series="topNewspaperDaySeries">
+                    </rickshaw>
                 </div>
             </div>
         </div>
