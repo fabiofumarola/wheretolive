@@ -273,7 +273,7 @@ angular.module('wheretoliveApp')
                         for (j = 0; j < valuesArray.length; j++){
                             arrayXY.push(
                                 {
-                                    x: valuesArray[j].key_as_string,
+                                    x: valuesArray[j].key,
                                     y: valuesArray[j].doc_count
                                 }
                             );
@@ -284,7 +284,7 @@ angular.module('wheretoliveApp')
                         });
                     }
                     console.log(array);
-                    $scope.topCrimesPerDay = array;
+                    $scope.topCrymeDaySeries = array;
                 });
             }
 
