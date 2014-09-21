@@ -183,13 +183,19 @@ angular.module('wheretoliveApp')
             $scope.topDayNewspaperOptions = {
                 renderer: 'area',
                 stroke: true,
-                preserve: true,
+                preserve: true
             };
 
             $scope.totalCrimeCityS = function(city){
-                Search.aggregateCountCrimes(city).then(function(data){
-                    console.log('Numero crimini',data);
-                    $scope.topCrimeAggregateNumber = data;
+                Search.aggregateCountCrimes(city).success(function(data){
+                    var array = data.aggregations.crimes_count.buckets;
+                    var result = 0;
+                    var i = 0;
+                    for (i = 0; i < array.length; i++){
+                        result += array[i].doc_count;
+                    }
+                    console.log(result);
+                    $scope.topCrimeAggregateNumber = result;
                 });
             };
 
