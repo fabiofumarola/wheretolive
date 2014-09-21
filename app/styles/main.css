@@ -44,6 +44,11 @@ body {
 .row-centered {
     text-align: center;
 }
+
+.row-pad-15 {
+    margin-left: 15px;
+    margin-right: 15px;
+}
 .col-centered {
     display: inline-block;
     float: none;
