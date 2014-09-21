@@ -8,10 +8,19 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+.fi {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
 	font-family: Flaticon;
-        font-size: 20px;
 font-style: normal;
 margin-left: 20px;
 }.flaticon-archer:before {
@@ -163,4 +172,27 @@ margin-left: 20px;
 }
 .flaticon-violent:before {
 	content: "\e031";
+}
+
+/* makes the font 33% larger relative to the icon container */
+.fi-lg {
+  font-size: 1.33333333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+.fi-2x {
+  font-size: 2em;
+}
+.fi-3x {
+  font-size: 3em;
+}
+.fi-4x {
+  font-size: 4em;
+}
+.fi-5x {
+  font-size: 5em;
+}
+.fi-fw {
+  width: 1.28571429em;
+  text-align: center;
 }
