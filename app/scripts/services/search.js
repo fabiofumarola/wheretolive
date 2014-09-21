@@ -531,7 +531,7 @@ app.service('Search', ['$http', function ($http) {
                     "filter": {
                         "range": {
                             "date": {
-                                "from": "now-6M/M",
+                                "from": "now-12M/M",
                                 "to": "now"
                             }
                         }
@@ -549,8 +549,8 @@ app.service('Search', ['$http', function ($http) {
                         "day_histogram": {
                             "date_histogram": {
                                 "field": "date",
-                                "interval": "day",
-                                "format" : "dd-MM-yyyy",
+                                "interval": "month",
+                                "format" : "MM-yyyy",
                                 "order": {
                                     "_key": "desc"
                                 }

@@ -265,12 +265,12 @@ angular.module('wheretoliveApp')
                     var array = [];
                     var i = 0;
                     var j = 0;
-                    for (i = 0; i < result.length; i++){
-                        var crimeArray = result[i];
+                    //for (i = 0; i < result.length; i++){
+                        var crimeArray = result[10];
                         var crime = crimeArray.key;
                         var valuesArray = crimeArray.day_histogram.buckets;
                         var arrayXY = []
-                        for (j = 0; j < valuesArray.length; j++){
+                        for (j = valuesArray.length -1 ; j >= 0; j--){
                             arrayXY.push(
                                 {
                                     x: valuesArray[j].key,
@@ -282,7 +282,7 @@ angular.module('wheretoliveApp')
                             name: crime,
                             data: arrayXY
                         });
-                    }
+                    //}
                     console.log(array);
                     $scope.topCrymeDaySeries = array;
                 });
