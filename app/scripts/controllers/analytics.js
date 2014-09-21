@@ -189,58 +189,54 @@ angular.module('wheretoliveApp')
                 preserve: true,
             };
 
-            $scope.aggregateTotalCrimesInCity = function (city) {
-                var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
-                    var res1 = data.data.aggregations.crimes_count.buckets;
-                    console.log("aggregateTotalCrimesInCity res", res1);
-                    var i = 0;
-                    var x = new Array();
-                    var y = new Array();
-                    for (i = 0; i < res1.length; i++) {
-                        x.push(res1[i].key);
-                        y.push(res1[i].doc_count);
-                    }
-                    $scope.topCrime.series = x;
-                    $scope.topCrime.data = [{
-                        x: "Top Crimini",
-                        y: y
-                    }];
-                    $scope.topCrimeAggregateNumber = res1.length;
-                    console.log('topCrime', $scope.topCrime);
-                    return res1;
+
+        $scope.aggregateTotalCrimesInCity = function (city) {
+            var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
+                var res1 = data.data.aggregations.crimes_count.buckets;
+                console.log("aggregateTotalCrimesInCity res", res1);
+                return res1;
 
 
-                });
-                return res;
-            };
+            });
+            return res;
+        };
 
-            $scope.aggregateTotalNewsInCity = function (city) {
-                var res = Search.aggregateTotalNewsInCity(city).then(function (data) {
-                    console.log('data',data.hits);
-                    $scope.totalNewsCity = data.hits.total;
-                    console.log("aggregateTotalNewsInCity res", res1);
-                    var res1 = data.hits.total;
-                    return res1;
-                    // setMarkersNews($scope.newsArray);
+        $scope.aggregateTotalNewsInCity = function (city) {
+            var res = Search.aggregateTotalNewsInCity(city).then(function (data) {
+                var res1 = data.data.hits.total;
+                console.log("aggregateTotalNewsInCity res", res1);
+                return res1;
+                // setMarkersNews($scope.newsArray);
 
 
-                });
-                return res;
-            };
-            $scope.aggregateTopCrimesInCity = function (city) {
-                var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
-                    var res1 = data.hits.total;
-                    console.log("aggregateTopCrimesInCity res", res1);
-                    return res1;
-                });
-                return res;
-            };
+            });
+            return res;
+        };
+        $scope.aggregateTopCrimesInCity = function (city) {
+            var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
+                var res1 = data.data.hits.total;
+                console.log("aggregateTopCrimesInCity res", res1);
+                return res1;
+            });
+            return res;
+        };
+
+        $scope.aggregateTopJournalsInCity = function (city) {
+            var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
+                var res1 = data.data.aggregations.crime_histograms.buckets;
+                //var res1="ciao";
+                console.log("aggregateTopJournalsInCity res", data);
+                return res1;
+            });
+            return res;
+        };
 
 
-            $scope.init = function () {
-                $scope.aggregateTotalCrimesInCity("Bari");
-                // $scope.aggregateTotalNewsInCity("Bari");
-                //$scope.aggregateTopCrimesInCity("Bari");
-            };
-
-  }]);
+        $scope.init = function () {
+            // $scope.aggregateTotalCrimesInCity("Bari");
+            // $scope.aggregateTotalNewsInCity("Bari");
+            //$scope.aggregateTopCrimesInCity("Bari");
+            $scope.aggregateTopJournalsInCity("Bari");
+        };
+    }]);
+>>>>>>> 6d00879bd170ffbaf73bbd776791cb78f35216ac
