@@ -239,8 +239,9 @@ app.service('Search', ['$http', function ($http) {
     /**
      * return total count crimes for city
      * @param city
+     * USATA
      */
-    this.aggregateCountCrimes = function(city){
+    this.countCrimes = function(city){
        var query = {
            "query": {
                "filtered": {
@@ -280,8 +281,9 @@ app.service('Search', ['$http', function ($http) {
 
     /*
      Numero di crimini totali per |city| from |date|
+     USATA
      */
-    this.aggregateTotalCrimesInCity = function (city) {
+    this.histogramCrimesInCity = function (city) {
         var query = {
             "query": {
                 "filtered": {
@@ -321,8 +323,9 @@ app.service('Search', ['$http', function ($http) {
 
     /*
      Numero di news totali per |city| from |date|
+     USATA
      */
-    this.aggregateTotalNewsInCity = function (city) {
+    this.totalNewsInCity = function (city) {
 
         var query = {
             "query": {
@@ -365,7 +368,7 @@ app.service('Search', ['$http', function ($http) {
     /*
      top giornali per |city| from |date|
      */
-    this.aggregateTopJournalsInCity = function (city) {
+    this.topJournalsInCity = function (city) {
 
         var query = {
             "query": {
@@ -373,7 +376,7 @@ app.service('Search', ['$http', function ($http) {
                     "query": {
                         "bool": {
                             "must": [
-                                {"match": {"location": ""}}
+                                {"match": {"location": "Bari"}}
                             ]
                         }
                     },
@@ -388,10 +391,10 @@ app.service('Search', ['$http', function ($http) {
                 }
             },
             "size": 0,
-            "aggs": {
-                "crime_histograms": {
-                    "terms": {
-                        "field": "urlWebsite",
+            "aggs" : {
+                "crime_histograms" : {
+                    "terms" : {
+                        "field" : "urlWebsite",
                         "size": 100
                     }
                 }

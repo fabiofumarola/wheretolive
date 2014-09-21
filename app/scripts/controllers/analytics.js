@@ -15,10 +15,10 @@ angular.module('wheretoliveApp')
             $scope.totalNewsCity = '0';
             $scope.showAnalytics = function (city) {
                 $scope.totalCrimeCityS(city);
-                $scope.aggregateTotalCrimesInCity(city);
-                $scope.aggregateTotalNewsInCity(city);
+                $scope.histogramCrimesInCity(city);
+                $scope.totalNewsInCity(city);
                 $scope.aggregateTopCrimesInCity(city);
-                $scope.aggregateTopJournalsInCity(city);
+                $scope.topJournalsInCity(city);
 
             };
 
@@ -95,7 +95,7 @@ angular.module('wheretoliveApp')
             $scope.topCrymeDayOptions = {
                 renderer: 'area',
                 stroke: true,
-                preserve: true,
+                preserve: true
             };
             $scope.topCrymeDaySeries = [{
                 name: 'Series 1',
@@ -185,7 +185,7 @@ angular.module('wheretoliveApp')
             };
 
             $scope.totalCrimeCityS = function(city){
-                Search.aggregateCountCrimes(city).success(function(data){
+                Search.countCrimes(city).success(function(data){
                     var array = data.aggregations.crimes_count.buckets;
                     var result = 0;
                     var i = 0;
@@ -196,8 +196,8 @@ angular.module('wheretoliveApp')
                 });
             };
 
-            $scope.aggregateTotalCrimesInCity = function (city) {
-                Search.aggregateTotalCrimesInCity(city).then(function (data) {
+            $scope.histogramCrimesInCity = function (city) {
+                Search.histogramCrimesInCity(city).then(function (data) {
                     var res1 = data.data.aggregations.crimes_count.buckets; //jshint ignore:line
                     var i = 0;
                     var x = [];
@@ -216,8 +216,8 @@ angular.module('wheretoliveApp')
                 });
             };
 
-            $scope.aggregateTotalNewsInCity = function (city) {
-                Search.aggregateTotalNewsInCity(city).then(function (data) {
+            $scope.totalNewsInCity = function (city) {
+                Search.totalNewsInCity(city).then(function (data) {
                     var res1 = data.data.hits.total;
                     $scope.totalNewsCity = res1;
 
@@ -232,11 +232,10 @@ angular.module('wheretoliveApp')
                 });
             };
 
-            $scope.aggregateTopJournalsInCity = function (city) {
+            $scope.topJournalsInCity = function (city) {
                 Search.aggregateTopCrimesInCity(city).then(function (data) {
-                    var res1 = data.data.aggregations.crime_histograms.buckets; //jshint ignore:line
-                    //var res1="ciao";
-
+                    var result = data.data.aggregations.crime_histograms.buckets;
+                    $scope.topJournals = result.slice(1,result.length);
                 });
             };
 
