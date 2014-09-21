@@ -243,6 +243,53 @@ app.service('Search', ['$http', function ($http) {
 
     };
 
+    /**
+     * return total count crimes for city
+     * @param city
+     */
+    this.aggregateCountCrimes = function(city){
+       var query = {
+           "query": {
+               "filtered": {
+                   "query": {
+                       "bool": {
+                           "must": [
+                               {"match": {"location": "Bari"}}
+                           ]
+                       }
+                   },
+                   "filter": {
+                       "range": {
+                           "date": {
+                               "from": "now-1M/M",
+                               "to": "now"
+                           }
+                       }
+                   }
+               }
+           },
+           "size": 0,
+           "aggs" : {
+               "crimes_count" : {
+                   "terms" : {
+                       "field" : "crime",
+                       "size": 10
+                   }
+               }
+           }
+       };
+
+       query.query.filtered.query.bool.must[0]["match"]["location"] = city;
+        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
+            var array = data.aggregations.crimes_count.bucket;
+            var result = array.reduce(function(previousValue, currentValue, index, array) {
+                return previousValue.doc_count + currentValue.doc_count;
+            });
+            return result;
+        });
+
+    }
+
 
     /*
      Numero di crimini totali per |city| from |date|
@@ -328,45 +375,6 @@ app.service('Search', ['$http', function ($http) {
 
     };
 
-    /*
-     Top crimini per |city| from |date|
-     */
-    this.aggregateTopCrimesInCity = function (city) {
-        var query = {
-            "query": {
-                "filtered": {
-                    "query": {
-                        "bool": {
-                            "must": [
-                                {"match": {"location": ""}}
-                            ]
-                        }
-                    },
-                    "filter": {
-                        "range": {
-                            "date": {
-                                "from": "now-1M/M",
-                                "to": "now"
-                            }
-                        }
-                    }
-                }
-            },
-            "size": 0,
-            "aggs": {
-                "crime_histograms": {
-                    "terms": {
-                        "field": "crime",
-                        "size": 100
-                    }
-                }
-            }
-        };
-        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
-        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
-            return data;
-        });
-    };
 
     /*
      top giornali per |city| from |date|
