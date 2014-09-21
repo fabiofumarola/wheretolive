@@ -155,9 +155,6 @@ angular.module('wheretoliveApp')
 
             //creo l'array dei markers a partire dal json
             var markers = new Array();
-            var func = function () {
-                console.log('mammamé');
-            };
             var count = 0;
             for (var i = 0; i < jsonData.length; i++) {
 
@@ -182,8 +179,7 @@ angular.module('wheretoliveApp')
         };
 
         /*
-         Init è una funzione speciale che viene richiamata ad ogni refresh della pagina.
-         Chiamata in news.html
+         ricordasi di aggiungere ng-init nella pagina web
          */
         $scope.init = function () {
             $scope.getCurrentPosition();
