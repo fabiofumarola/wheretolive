@@ -1,0 +1,166 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+	font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}.flaticon-archer:before {
+	content: "\e000";
+}
+.flaticon-armed2:before {
+	content: "\e001";
+}
+.flaticon-armed3:before {
+	content: "\e002";
+}
+.flaticon-bullet6:before {
+	content: "\e003";
+}
+.flaticon-captured:before {
+	content: "\e004";
+}
+.flaticon-criminal10:before {
+	content: "\e005";
+}
+.flaticon-criminal11:before {
+	content: "\e006";
+}
+.flaticon-criminal12:before {
+	content: "\e007";
+}
+.flaticon-criminal13:before {
+	content: "\e008";
+}
+.flaticon-criminal14:before {
+	content: "\e009";
+}
+.flaticon-criminal15:before {
+	content: "\e00a";
+}
+.flaticon-criminal16:before {
+	content: "\e00b";
+}
+.flaticon-criminal17:before {
+	content: "\e00c";
+}
+.flaticon-criminal18:before {
+	content: "\e00d";
+}
+.flaticon-criminal19:before {
+	content: "\e00e";
+}
+.flaticon-criminal1:before {
+	content: "\e00f";
+}
+.flaticon-criminal20:before {
+	content: "\e010";
+}
+.flaticon-criminal21:before {
+	content: "\e011";
+}
+.flaticon-criminal22:before {
+	content: "\e012";
+}
+.flaticon-criminal23:before {
+	content: "\e013";
+}
+.flaticon-criminal24:before {
+	content: "\e014";
+}
+.flaticon-criminal25:before {
+	content: "\e015";
+}
+.flaticon-criminal26:before {
+	content: "\e016";
+}
+.flaticon-criminal27:before {
+	content: "\e017";
+}
+.flaticon-criminal28:before {
+	content: "\e018";
+}
+.flaticon-criminal29:before {
+	content: "\e019";
+}
+.flaticon-criminal2:before {
+	content: "\e01a";
+}
+.flaticon-criminal30:before {
+	content: "\e01b";
+}
+.flaticon-criminal31:before {
+	content: "\e01c";
+}
+.flaticon-criminal32:before {
+	content: "\e01d";
+}
+.flaticon-criminal33:before {
+	content: "\e01e";
+}
+.flaticon-criminal34:before {
+	content: "\e01f";
+}
+.flaticon-criminal35:before {
+	content: "\e020";
+}
+.flaticon-criminal3:before {
+	content: "\e021";
+}
+.flaticon-criminal4:before {
+	content: "\e022";
+}
+.flaticon-criminal5:before {
+	content: "\e023";
+}
+.flaticon-criminal6:before {
+	content: "\e024";
+}
+.flaticon-criminal7:before {
+	content: "\e025";
+}
+.flaticon-criminal8:before {
+	content: "\e026";
+}
+.flaticon-criminal9:before {
+	content: "\e027";
+}
+.flaticon-criminals:before {
+	content: "\e028";
+}
+.flaticon-elegant17:before {
+	content: "\e029";
+}
+.flaticon-eye85:before {
+	content: "\e02a";
+}
+.flaticon-gangster2:before {
+	content: "\e02b";
+}
+.flaticon-handcuffs:before {
+	content: "\e02c";
+}
+.flaticon-man198:before {
+	content: "\e02d";
+}
+.flaticon-motorcyclists:before {
+	content: "\e02e";
+}
+.flaticon-robber10:before {
+	content: "\e02f";
+}
+.flaticon-two165:before {
+	content: "\e030";
+}
+.flaticon-violent:before {
+	content: "\e031";
+}
