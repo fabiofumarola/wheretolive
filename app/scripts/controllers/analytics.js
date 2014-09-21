@@ -15,8 +15,11 @@ angular.module('wheretoliveApp')
             $scope.totalNewsCity = '0';
             $scope.showAnalytics = function (city) {
                 console.log(city);
+                $scope.totalCrimeCityS(city);
                 $scope.aggregateTotalCrimesInCity(city);
                 $scope.aggregateTotalNewsInCity(city);
+                $scope.aggregateTopCrimesInCity(city);
+                $scope.aggregateTopJournalsInCity(city);
 
             };
 
@@ -55,12 +58,6 @@ angular.module('wheretoliveApp')
 
             /** TOP CRIME **/
             $scope.topCrime = {
-                series: ["Sales", "Income", "Expense"],
-                data: [{
-                    x: "Computers",
-                    y: [54, 0, 879],
-                    tooltip: "This is a tooltip"
-  }]
             };
 
             $scope.topCrimeChartType = 'bar';
@@ -189,21 +186,27 @@ angular.module('wheretoliveApp')
                 preserve: true,
             };
 
+            $scope.totalCrimeCityS = function(city){
+                Search.aggregateCountCrimes(city).then(function(data){
+                    console.log('Numero crimini',data);
+                    $scope.topCrimeAggregateNumber = data;
+                });
+            };
 
         $scope.aggregateTotalCrimesInCity = function (city) {
              var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
-                    var res1 = data.data.aggregations.crimes_count.buckets;
-                    console.log("aggregateTotalCrimesInCity res", res1);
+                    var res1 = data.data.aggregations.crimes_count.buckets; //jshint ignore:line
+                    console.log('aggregateTotalCrimesInCity res', res1);
                     var i = 0;
-                    var x = new Array();
-                    var y = new Array();
+                    var x = [];
+                    var y = [];
                     for (i = 0; i < res1.length; i++) {
                         x.push(res1[i].key);
-                        y.push(res1[i].doc_count);
+                        y.push(res1[i].doc_count); //jshint ignore:line
                     }
                     $scope.topCrime.series = x;
                     $scope.topCrime.data = [{
-                        x: "Top Crimini",
+                        x: 'Top Crimini',
                         y: y
                     }];
                     $scope.topCrimeAggregateNumber = res1.length;
@@ -218,9 +221,9 @@ angular.module('wheretoliveApp')
         $scope.aggregateTotalNewsInCity = function (city) {
             var res = Search.aggregateTotalNewsInCity(city).then(function (data) {
                 var res1 = data.data.hits.total;
-                console.log("aggregateTotalNewsInCity res", res1);
+                console.log('aggregateTotalNewsInCity res', res1);
+                $scope.totalNewsCity = res1;
                 return res1;
-                // setMarkersNews($scope.newsArray);
 
 
             });
@@ -229,7 +232,7 @@ angular.module('wheretoliveApp')
         $scope.aggregateTopCrimesInCity = function (city) {
             var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
                 var res1 = data.data.hits.total;
-                console.log("aggregateTopCrimesInCity res", res1);
+                console.log('aggregateTopCrimesInCity res', res1);
                 return res1;
             });
             return res;
@@ -237,9 +240,9 @@ angular.module('wheretoliveApp')
 
         $scope.aggregateTopJournalsInCity = function (city) {
             var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
-                var res1 = data.data.aggregations.crime_histograms.buckets;
+                var res1 = data.data.aggregations.crime_histograms.buckets; //jshint ignore:line
                 //var res1="ciao";
-                console.log("aggregateTopJournalsInCity res", data);
+                console.log('aggregateTopJournalsInCity res', data);
                 return res1;
             });
             return res;
@@ -250,7 +253,6 @@ angular.module('wheretoliveApp')
             // $scope.aggregateTotalCrimesInCity("Bari");
             // $scope.aggregateTotalNewsInCity("Bari");
             //$scope.aggregateTopCrimesInCity("Bari");
-            $scope.aggregateTopJournalsInCity("Bari");
+            //$scope.aggregateTopJournalsInCity('Bari');
         };
     }]);
->>>>>>> 6d00879bd170ffbaf73bbd776791cb78f35216ac
