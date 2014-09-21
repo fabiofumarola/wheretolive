@@ -17,7 +17,7 @@ angular.module('wheretoliveApp')
                 $scope.totalCrimeCityS(city);
                 $scope.histogramCrimesInCity(city);
                 $scope.totalNewsInCity(city);
-                $scope.aggregateTopCrimesInCity(city);
+                //$scope.aggregateTopCrimesInCity(city);
                 $scope.topJournalsInCity(city);
 
             };
@@ -234,10 +234,10 @@ angular.module('wheretoliveApp')
             };
 
             $scope.topJournalsInCity = function (city) {
-                Search.topJournalsInCity(city).then(function (data) {
-                    var result = data.aggregations.crime_histograms.buckets;
+                Search.topJournalsInCity(city).success(function (data) {
+                    console.log(data);
+                    var result = data.aggregations.crimes.buckets;
                     $scope.topJournals = result.slice(1,result.length);
-                    console.log('topJounrals',$scope.topJournals);
                 });
             };
 

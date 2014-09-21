@@ -274,7 +274,7 @@ app.service('Search', ['$http', function ($http) {
        };
 
        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
-        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query);
+       return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query);
 
     }
 
@@ -367,6 +367,7 @@ app.service('Search', ['$http', function ($http) {
 
     /*
      top giornali per |city| from |date|
+     USATA
      */
     this.topJournalsInCity = function (city) {
 
@@ -392,7 +393,7 @@ app.service('Search', ['$http', function ($http) {
             },
             "size": 0,
             "aggs" : {
-                "crime_histograms" : {
+                "crimes" : {
                     "terms" : {
                         "field" : "urlWebsite",
                         "size": 100
@@ -403,10 +404,7 @@ app.service('Search', ['$http', function ($http) {
 
 
         query.query.filtered.query.bool.must[0]["match"]["location"] = city;
-        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
-            return data;
-        });
-
+        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query);
     };
 
 
