@@ -14,6 +14,7 @@ angular.module('wheretoliveApp')
             $scope.toJournal = "";
             $scope.topCrimeAggregateNumber = '0';
             $scope.totalNewsCity = '0';
+            $scope.topCrimesPerDay = [];
             $scope.showAnalytics = function (city) {
                 $scope.totalCrimeCityS(city);
                 $scope.histogramCrimesInCity(city);
@@ -22,6 +23,7 @@ angular.module('wheretoliveApp')
                 $scope.topJournalsInCity(city);
                 $scope.topCrime(city);
                 $scope.topJournal(city);
+                $scope.topCrimesPerDay(city);
 
             };
 
@@ -256,6 +258,13 @@ angular.module('wheretoliveApp')
                     $scope.topJournal = result[1].key;
                 });
             };
+
+            $scope.topCrimesPerDay = function (city) {
+                Search.topCrimePerDay(city).success(function (data){
+                    var result = data.aggregations.top_journal.buckets;
+                    $scope.topCrimePerDay = result
+                });
+            }
 
             $scope.init = function () {
                 // $scope.aggregateTotalCrimesInCity("Bari");

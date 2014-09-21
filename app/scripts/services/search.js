@@ -480,4 +480,53 @@ app.service('Search', ['$http', function ($http) {
         query.query.filtered.query.bool.must[0]["match"]["location"] = city;
         return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query);
     };
+
+    this.topCrimesPerDay = function(city) {
+        var query = {
+            "query": {
+                "filtered": {
+                    "query": {
+                        "bool": {
+                            "must": [
+                                {"match": {"location": "Bari"}}
+                            ]
+                        }
+                    },
+                    "filter": {
+                        "range": {
+                            "date": {
+                                "from": "now-6M/M",
+                                "to": "now"
+                            }
+                        }
+                    }
+                }
+            },
+            "size": 0,
+            "aggs" : {
+                "crime_top" : {
+                    "terms" : {
+                        "field" : "crime",
+                        "size": 50
+                    },
+                    "aggs": {
+                        "day_histogram": {
+                            "date_histogram": {
+                                "field": "date",
+                                "interval": "day",
+                                "format" : "dd-MM-yyyy",
+                                "order": {
+                                    "_key": "desc"
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        };
+
+        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
+        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query);
+    };
 }]);
