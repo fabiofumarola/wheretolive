@@ -192,13 +192,12 @@ angular.module('wheretoliveApp')
                     for (i = 0; i < array.length; i++){
                         result += array[i].doc_count;
                     }
-                    console.log(result);
                     $scope.topCrimeAggregateNumber = result;
                 });
             };
 
             $scope.aggregateTotalCrimesInCity = function (city) {
-                var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
+                Search.aggregateTotalCrimesInCity(city).then(function (data) {
                     var res1 = data.data.aggregations.crimes_count.buckets; //jshint ignore:line
                     var i = 0;
                     var x = [];
@@ -212,39 +211,33 @@ angular.module('wheretoliveApp')
                         x: 'Top Crimini',
                         y: y
                     }];
-                    $scope.topCrimeAggregateNumber = res1.length;
-                    return res1;
 
 
                 });
-                return res;
             };
 
             $scope.aggregateTotalNewsInCity = function (city) {
                 Search.aggregateTotalNewsInCity(city).then(function (data) {
                     var res1 = data.data.hits.total;
                     $scope.totalNewsCity = res1;
-                    return res1;
+
 
 
                 });
-                return res;
             };
             $scope.aggregateTopCrimesInCity = function (city) {
                 Search.aggregateTopCrimesInCity(city).then(function (data) {
                     var res1 = data.data.hits.total;
-                    return res1;
+
                 });
-                return res;
             };
 
             $scope.aggregateTopJournalsInCity = function (city) {
                 Search.aggregateTopCrimesInCity(city).then(function (data) {
                     var res1 = data.data.aggregations.crime_histograms.buckets; //jshint ignore:line
                     //var res1="ciao";
-                    return res1;
+
                 });
-                return res;
             };
 
 
