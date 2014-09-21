@@ -8,12 +8,16 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-    .controller('CrimapCtrl', ['$scope', 'Search',
+    .controller('CrimapCtrl', ['$scope', 'Search', 
         function ($scope, Search) {
             /*
-         Posizione di default  Palazzo San Gervaso
-         */
+             Posizione di default  Palazzo San Gervaso
+             */
             console.log(Search);
+            $scope.city=undefined;
+
+
+
             $scope.map = {
                 center: {
                     latitude: '41',
@@ -25,4 +29,16 @@ angular.module('wheretoliveApp')
             $scope.options = {
                 value: 10
             };
-  }]);
+            $scope.searchCrimes = function () {
+                console.log($scope.city);
+            };
+
+            $scope.$on('gmPlacesAutocomplete::placeChanged', function(){
+                var location = $scope.city.getPlace().geometry.location;
+                $scope.lat = location.lat();
+                $scope.lng = location.lng();
+                $scope.$apply();
+                console.log("Lat: "+$scope.lat+"--Lng"+$scope.lng);
+            });
+
+        }]);
