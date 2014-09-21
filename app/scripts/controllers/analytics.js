@@ -22,6 +22,7 @@ angular.module('wheretoliveApp')
 
             };
 
+            $scope.topJournals = [];
             $scope.newspapers = [
                 {
                     titolo: 'Giornale 1'
@@ -233,9 +234,10 @@ angular.module('wheretoliveApp')
             };
 
             $scope.topJournalsInCity = function (city) {
-                Search.aggregateTopCrimesInCity(city).then(function (data) {
-                    var result = data.data.aggregations.crime_histograms.buckets;
+                Search.topJournalsInCity(city).then(function (data) {
+                    var result = data.aggregations.crime_histograms.buckets;
                     $scope.topJournals = result.slice(1,result.length);
+                    console.log('topJounrals',$scope.topJournals);
                 });
             };
 
