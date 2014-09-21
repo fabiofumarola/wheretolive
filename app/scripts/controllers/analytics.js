@@ -10,7 +10,8 @@
 angular.module('wheretoliveApp')
     .controller('AnalyticsCtrl', ['$scope', 'Search',
         function ($scope, Search) {
-
+            $scope.topCrime = "";
+            $scope.toJournal = "";
             $scope.topCrimeAggregateNumber = '0';
             $scope.totalNewsCity = '0';
             $scope.showAnalytics = function (city) {
@@ -19,6 +20,8 @@ angular.module('wheretoliveApp')
                 $scope.totalNewsInCity(city);
                 //$scope.aggregateTopCrimesInCity(city);
                 $scope.topJournalsInCity(city);
+                $scope.topCrime(city);
+                $scope.topJournal(city);
 
             };
 
@@ -235,12 +238,24 @@ angular.module('wheretoliveApp')
 
             $scope.topJournalsInCity = function (city) {
                 Search.topJournalsInCity(city).success(function (data) {
-                    console.log(data);
                     var result = data.aggregations.crimes.buckets;
                     $scope.topJournals = result.slice(1,result.length);
                 });
             };
 
+            $scope.topCrime = function (city) {
+              Search.topCrime(city).success(function (data){
+                  var result = data.aggregations.crime_histograms.buckets;
+                  $scope.topCrime = result[1].key;
+              });
+            };
+
+            $scope.topJournal = function (city) {
+                Search.topJournal(city).success(function (data){
+                    var result = data.aggregations.top_journal.buckets;
+                    $scope.topJournal = result[1].key;
+                });
+            };
 
             $scope.init = function () {
                 // $scope.aggregateTotalCrimesInCity("Bari");

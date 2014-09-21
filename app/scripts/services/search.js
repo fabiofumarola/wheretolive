@@ -407,5 +407,77 @@ app.service('Search', ['$http', function ($http) {
         return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query);
     };
 
+    this.topCrime = function(city){
 
+        var query = {
+            "query": {
+                "filtered": {
+                    "query": {
+                        "bool": {
+                            "must": [
+                                {"match": {"location": "Bari"}}
+                            ]
+                        }
+                    },
+                    "filter": {
+                        "range": {
+                            "date": {
+                                "from": "now-1M/M",
+                                "to": "now"
+                            }
+                        }
+                    }
+                }
+            },
+            "size": 0,
+            "aggs" : {
+                "crime_histograms" : {
+                    "terms" : {
+                        "field" : "crime",
+                        "size": 50
+                    }
+                }
+            }
+        }
+
+        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
+        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query);
+    };
+
+    this.topJournal = function(city) {
+
+        var query = {
+            "query": {
+            "filtered": {
+                "query": {
+                    "bool": {
+                        "must": [
+                            {"match": {"location": "Bari"}}
+                        ]
+                    }
+                },
+                "filter": {
+                    "range": {
+                        "date": {
+                            "from": "now-1M/M",
+                                "to": "now"
+                        }
+                    }
+                }
+            }
+        },
+            "size": 0,
+            "aggs" : {
+            "top_journal" : {
+                "terms" : {
+                    "field" : "urlWebsite",
+                        "size": 50
+                }
+            }
+        }
+        };
+
+        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
+        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query);
+    };
 }]);
