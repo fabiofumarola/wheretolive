@@ -7,7 +7,10 @@
                     <div class="input-group-addon"><i class="fa fa-search" style="cursor: pointer" title="Avvia la ricerca" ng-click="searchCrimes()"></i>
                     </div-->
                     <input type="text" class="form-control" id="search_box" placeholder="Digita il nome di una città"
-                            ng-model="city" ng-autocomplete>
+                           ng-autocomplete ng-model="search.result" details="search.details" options="search.options" >
+
+                    {{search.details.geometry.location}}
+
                 <span class="input-group-btn">
                     <button class="btn btn-defaultn greenBotton" type="submit" ng-click="searchCrimes()"><span
                             class="glyphicon glyphicon-search"></span>

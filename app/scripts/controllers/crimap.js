@@ -30,8 +30,15 @@ angular.module('wheretoliveApp')
                 value: 10
             };
             $scope.searchCrimes = function () {
-                console.log($scope.city);
+                //console.log($scope.city);
+                console.log($scope.search.result);
+                console.log($scope.search.options);
             };
+
+
+
+
+
 
 
 
