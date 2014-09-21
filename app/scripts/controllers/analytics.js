@@ -8,11 +8,12 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-    .controller('AnalyticsCtrl', ['$scope',
-        function ($scope) {
+    .controller('AnalyticsCtrl', ['$scope', 'Search',
+        function ($scope,Search) {
 
             $scope.showAnalytics = function(city){
                 console.log(city);
+                $scope.aggregateTotalCrimesInCity(city);
             };
 
             $scope.newspapers = [
