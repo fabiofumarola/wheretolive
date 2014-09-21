@@ -57,7 +57,7 @@
                         <i class="fi flaticon-criminal31 fi-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">Omicidio</div>
+                        <div class="">{{topCrime}}</div>
                         <div>Il crimine più commesso</div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                         <i class="fa fa-newspaper-o fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">Repubblica.it</div>
+                        <div class="huge">{{topJournal}}</div>
                         <div>Il giornale più citato</div>
                     </div>
                 </div>
@@ -99,8 +99,8 @@
             </div>
             <div class="panel-body">
                 <div class="list-group">
-                    <a href="" class="list-group-item" ng-repeat="newspaper in newspapers">
-                        {{newspaper.titolo}}
+                    <a href="" class="list-group-item" ng-repeat="topJournal in topJournals">
+                        {{topJournal.key}} - {{topJournal.doc_count}} articoli
                     </a>
                 </div>
             </div>
