@@ -328,6 +328,9 @@ app.service('Search', ['$http', function ($http) {
 
     };
 
+    /*
+    Top crimini per |city| from |date|
+     */
     this.aggregateTopCrimesInCity = function (city) {
         var query = {
             "query": {
@@ -364,6 +367,8 @@ app.service('Search', ['$http', function ($http) {
             return data;
         });
     };
+
+
 
 
 }]);
