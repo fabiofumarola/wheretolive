@@ -29,7 +29,7 @@ angular.module('wheretoliveApp')
 
         $scope.aggregateTotalNewsInCity = function (city) {
             var res = Search.aggregateTotalNewsInCity(city).then(function (data) {
-                var res1 = data.hits.total;
+                var res1 = data.data.hits.total;
                 console.log("aggregateTotalNewsInCity res", res1);
                 return res1;
                 // setMarkersNews($scope.newsArray);
@@ -38,10 +38,20 @@ angular.module('wheretoliveApp')
             });
             return res;
         };
-        $scope.aggregateTopCrimesInCity = function(city){
+        $scope.aggregateTopCrimesInCity = function (city) {
             var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
-                var res1 = data.hits.total;
+                var res1 = data.data.hits.total;
                 console.log("aggregateTopCrimesInCity res", res1);
+                return res1;
+            });
+            return res;
+        };
+
+        $scope.aggregateTopJournalsInCity = function (city) {
+            var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
+                var res1 = data.data.aggregations.crime_histograms.buckets;
+                //var res1="ciao";
+                console.log("aggregateTopJournalsInCity res", data);
                 return res1;
             });
             return res;
@@ -49,8 +59,9 @@ angular.module('wheretoliveApp')
 
 
         $scope.init = function () {
-            $scope.aggregateTotalCrimesInCity("Bari");
-           // $scope.aggregateTotalNewsInCity("Bari");
+            // $scope.aggregateTotalCrimesInCity("Bari");
+            // $scope.aggregateTotalNewsInCity("Bari");
             //$scope.aggregateTopCrimesInCity("Bari");
+            $scope.aggregateTopJournalsInCity("Bari");
         };
     }]);

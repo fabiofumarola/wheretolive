@@ -329,7 +329,7 @@ app.service('Search', ['$http', function ($http) {
     };
 
     /*
-    Top crimini per |city| from |date|
+     Top crimini per |city| from |date|
      */
     this.aggregateTopCrimesInCity = function (city) {
         var query = {
@@ -368,7 +368,49 @@ app.service('Search', ['$http', function ($http) {
         });
     };
 
+    /*
+     top giornali per |city| from |date|
+     */
+    this.aggregateTopJournalsInCity = function (city) {
 
+        var query = {
+            "query": {
+                "filtered": {
+                    "query": {
+                        "bool": {
+                            "must": [
+                                {"match": {"location": ""}}
+                            ]
+                        }
+                    },
+                    "filter": {
+                        "range": {
+                            "date": {
+                                "from": "now-1M/M",
+                                "to": "now"
+                            }
+                        }
+                    }
+                }
+            },
+            "size": 0,
+            "aggs": {
+                "crime_histograms": {
+                    "terms": {
+                        "field": "urlWebsite",
+                        "size": 100
+                    }
+                }
+            }
+        };
+
+
+        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
+        return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
+            return data;
+        });
+
+    };
 
 
 }]);
