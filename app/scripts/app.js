@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'google-maps',
     'angularCharts',
-    'angular-rickshaw'
+    'angular-rickshaw',
+    'ngAutocomplete'
   ])
   .config(function ($routeProvider) {
     $routeProvider
