@@ -260,9 +260,31 @@ angular.module('wheretoliveApp')
             };
 
             $scope.topCrimesPerDay = function (city) {
-                Search.topCrimePerDay(city).success(function (data){
-                    var result = data.aggregations.top_journal.buckets;
-                    $scope.topCrimePerDay = result
+                Search.topCrimesPerDay(city).success(function (data){
+                    var result = data.aggregations.crime_top.buckets;
+                    var array = [];
+                    var i = 0;
+                    var j = 0;
+                    for (i = 0; i < result.length; i++){
+                        var crimeArray = result[i];
+                        var crime = crimeArray.key;
+                        var valuesArray = crimeArray.day_histogram.buckets;
+                        var arrayXY = []
+                        for (j = 0; j < valuesArray.length; j++){
+                            arrayXY.push(
+                                {
+                                    x: valuesArray[j].key_as_string,
+                                    y: valuesArray[j].doc_count
+                                }
+                            );
+                        }
+                        array.push({
+                            name: crime,
+                            data: arrayXY
+                        });
+                    }
+                    console.log(array);
+                    $scope.topCrimesPerDay = array;
                 });
             }
 
