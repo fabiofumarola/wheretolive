@@ -278,7 +278,8 @@ app.service('Search', ['$http', function ($http) {
                 }
             }
         };
-        query.filtered.query.bool.must.match.location = city;
+        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
+        //console.log("Query "+ query.query.filtered.query.bool.must);
         return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
             return data;
         });
@@ -287,7 +288,7 @@ app.service('Search', ['$http', function ($http) {
     /*
      Numero di news totali per |city| from |date|
      */
-    this.aggregateTotalNewsInCity = function(city){
+    this.aggregateTotalNewsInCity = function (city) {
 
         var query = {
             "query": {
@@ -310,16 +311,16 @@ app.service('Search', ['$http', function ($http) {
                 }
             },
             "size": 0,
-            "aggs" : {
-                "crimes_count" : {
-                    "terms" : {
-                        "field" : "_id",
+            "aggs": {
+                "crimes_count": {
+                    "terms": {
+                        "field": "_id",
                         "size": 10
                     }
                 }
             }
         };
-        query.filtered.query.bool.must["match"].location=city;
+        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
         console.log(query);
         return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
             return data;
@@ -327,7 +328,7 @@ app.service('Search', ['$http', function ($http) {
 
     };
 
-    this.aggregateTopCrimesInCity = function(city){
+    this.aggregateTopCrimesInCity = function (city) {
         var query = {
             "query": {
                 "filtered": {
@@ -349,22 +350,20 @@ app.service('Search', ['$http', function ($http) {
                 }
             },
             "size": 0,
-            "aggs" : {
-                "crime_histograms" : {
-                    "terms" : {
-                        "field" : "crime",
+            "aggs": {
+                "crime_histograms": {
+                    "terms": {
+                        "field": "crime",
                         "size": 100
                     }
                 }
             }
         };
-        query.filtered.query.bool.must.match.location=city;
+        query.query.filtered.query.bool.must[0]["match"]["location"] = city;
         return $http.post('http://www.wheretolive.it/map/service/wheretolive/news/_search', query).success(function (data) {
             return data;
         });
     };
-
-
 
 
 }]);
