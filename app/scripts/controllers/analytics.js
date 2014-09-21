@@ -9,11 +9,15 @@
  */
 angular.module('wheretoliveApp')
     .controller('AnalyticsCtrl', ['$scope', 'Search',
-        function ($scope,Search) {
+        function ($scope, Search) {
 
-            $scope.showAnalytics = function(city){
+            $scope.topCrimeAggregateNumber = '0';
+            $scope.totalNewsCity = '0';
+            $scope.showAnalytics = function (city) {
                 console.log(city);
                 $scope.aggregateTotalCrimesInCity(city);
+                $scope.aggregateTotalNewsInCity(city);
+
             };
 
             $scope.newspapers = [
@@ -51,12 +55,12 @@ angular.module('wheretoliveApp')
 
             /** TOP CRIME **/
             $scope.topCrime = {
-                series: ['Omicidio', 'Sparatoria', 'Furto', 'Stupro'],
+                series: ["Sales", "Income", "Expense"],
                 data: [{
-                    x: '',
-                    y: [54, 80, 23, 40],
-                    tooltip: 'This is a tooltip'
-                    }]
+                    x: "Computers",
+                    y: [54, 0, 879],
+                    tooltip: "This is a tooltip"
+  }]
             };
 
             $scope.topCrimeChartType = 'bar';
@@ -87,9 +91,9 @@ angular.module('wheretoliveApp')
             /** TOP DAY CRIME **/
             $scope.topCrymeDayFeatures = {
                 legend: {
-                        toggle: true,
-                        highlight: true
-                    }
+                    toggle: true,
+                    highlight: true
+                }
             };
 
             $scope.topDayCrimeChartType = 'line';
@@ -178,50 +182,65 @@ angular.module('wheretoliveApp')
                     y: 15
                 }]
                     }];
-            $scope.topNewspaperDayFeatures = {
-            };
+            $scope.topNewspaperDayFeatures = {};
             $scope.topDayNewspaperOptions = {
-                 renderer: 'area',
+                renderer: 'area',
                 stroke: true,
                 preserve: true,
             };
 
             $scope.aggregateTotalCrimesInCity = function (city) {
-            var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
-                var res1 = data.data.aggregations.crimes_count.buckets;
-                console.log("aggregateTotalCrimesInCity res", res1);
-                return res1;
+                var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
+                    var res1 = data.data.aggregations.crimes_count.buckets;
+                    console.log("aggregateTotalCrimesInCity res", res1);
+                    var i = 0;
+                    var x = new Array();
+                    var y = new Array();
+                    for (i = 0; i < res1.length; i++) {
+                        x.push(res1[i].key);
+                        y.push(res1[i].doc_count);
+                    }
+                    $scope.topCrime.series = x;
+                    $scope.topCrime.data = [{
+                        x: "Top Crimini",
+                        y: y
+                    }];
+                    $scope.topCrimeAggregateNumber = res1.length;
+                    console.log('topCrime', $scope.topCrime);
+                    return res1;
 
 
-            });
-            return res;
-        };
+                });
+                return res;
+            };
 
-        $scope.aggregateTotalNewsInCity = function (city) {
-            var res = Search.aggregateTotalNewsInCity(city).then(function (data) {
-                var res1 = data.hits.total;
-                console.log("aggregateTotalNewsInCity res", res1);
-                return res1;
-                // setMarkersNews($scope.newsArray);
-
-
-            });
-            return res;
-        };
-        $scope.aggregateTopCrimesInCity = function(city){
-            var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
-                var res1 = data.hits.total;
-                console.log("aggregateTopCrimesInCity res", res1);
-                return res1;
-            });
-            return res;
-        };
+            $scope.aggregateTotalNewsInCity = function (city) {
+                var res = Search.aggregateTotalNewsInCity(city).then(function (data) {
+                    console.log('data',data.hits);
+                    $scope.totalNewsCity = data.hits.total;
+                    console.log("aggregateTotalNewsInCity res", res1);
+                    var res1 = data.hits.total;
+                    return res1;
+                    // setMarkersNews($scope.newsArray);
 
 
-        $scope.init = function () {
-            $scope.aggregateTotalCrimesInCity("Bari");
-           // $scope.aggregateTotalNewsInCity("Bari");
-            //$scope.aggregateTopCrimesInCity("Bari");
-        };
+                });
+                return res;
+            };
+            $scope.aggregateTopCrimesInCity = function (city) {
+                var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
+                    var res1 = data.hits.total;
+                    console.log("aggregateTopCrimesInCity res", res1);
+                    return res1;
+                });
+                return res;
+            };
+
+
+            $scope.init = function () {
+                $scope.aggregateTotalCrimesInCity("Bari");
+                // $scope.aggregateTotalNewsInCity("Bari");
+                //$scope.aggregateTopCrimesInCity("Bari");
+            };
 
   }]);
