@@ -14,7 +14,6 @@ angular.module('wheretoliveApp')
             $scope.topCrimeAggregateNumber = '0';
             $scope.totalNewsCity = '0';
             $scope.showAnalytics = function (city) {
-                console.log(city);
                 $scope.totalCrimeCityS(city);
                 $scope.aggregateTotalCrimesInCity(city);
                 $scope.aggregateTotalNewsInCity(city);
@@ -57,8 +56,7 @@ angular.module('wheretoliveApp')
         ];
 
             /** TOP CRIME **/
-            $scope.topCrime = {
-            };
+            $scope.topCrime = {};
 
             $scope.topCrimeChartType = 'bar';
             $scope.topCrimeConfig = {
@@ -186,17 +184,19 @@ angular.module('wheretoliveApp')
                 preserve: true,
             };
 
-            $scope.totalCrimeCityS = function(city){
-                Search.aggregateCountCrimes(city).then(function(data){
-                    console.log('Numero crimini',data);
-                    $scope.topCrimeAggregateNumber = data;
+            $scope.totalCrimeCityS = function (city) {
+                Search.aggregateCountCrimes(city).success(function (data) {
+                    var array = data.aggregations.crimes_count.bucket;
+                    var result = array.reduce(function (previousValue, currentValue, index, array) {
+                        return previousValue.doc_count + currentValue.doc_count;
+                    });
+                    $scope.topCrimeAggregateNumber = result;
                 });
             };
 
-        $scope.aggregateTotalCrimesInCity = function (city) {
-             var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
+            $scope.aggregateTotalCrimesInCity = function (city) {
+                var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
                     var res1 = data.data.aggregations.crimes_count.buckets; //jshint ignore:line
-                    console.log('aggregateTotalCrimesInCity res', res1);
                     var i = 0;
                     var x = [];
                     var y = [];
@@ -210,49 +210,45 @@ angular.module('wheretoliveApp')
                         y: y
                     }];
                     $scope.topCrimeAggregateNumber = res1.length;
-                    console.log('topCrime', $scope.topCrime);
                     return res1;
 
 
                 });
                 return res;
-        };
+            };
 
-        $scope.aggregateTotalNewsInCity = function (city) {
-            var res = Search.aggregateTotalNewsInCity(city).then(function (data) {
-                var res1 = data.data.hits.total;
-                console.log('aggregateTotalNewsInCity res', res1);
-                $scope.totalNewsCity = res1;
-                return res1;
-
-
-            });
-            return res;
-        };
-        $scope.aggregateTopCrimesInCity = function (city) {
-            var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
-                var res1 = data.data.hits.total;
-                console.log('aggregateTopCrimesInCity res', res1);
-                return res1;
-            });
-            return res;
-        };
-
-        $scope.aggregateTopJournalsInCity = function (city) {
-            var res = Search.aggregateTopCrimesInCity(city).then(function (data) {
-                var res1 = data.data.aggregations.crime_histograms.buckets; //jshint ignore:line
-                //var res1="ciao";
-                console.log('aggregateTopJournalsInCity res', data);
-                return res1;
-            });
-            return res;
-        };
+            $scope.aggregateTotalNewsInCity = function (city) {
+                Search.aggregateTotalNewsInCity(city).then(function (data) {
+                    var res1 = data.data.hits.total;
+                    $scope.totalNewsCity = res1;
+                    return res1;
 
 
-        $scope.init = function () {
-            // $scope.aggregateTotalCrimesInCity("Bari");
-            // $scope.aggregateTotalNewsInCity("Bari");
-            //$scope.aggregateTopCrimesInCity("Bari");
-            //$scope.aggregateTopJournalsInCity('Bari');
-        };
+                });
+                return res;
+            };
+            $scope.aggregateTopCrimesInCity = function (city) {
+                Search.aggregateTopCrimesInCity(city).then(function (data) {
+                    var res1 = data.data.hits.total;
+                    return res1;
+                });
+                return res;
+            };
+
+            $scope.aggregateTopJournalsInCity = function (city) {
+                Search.aggregateTopCrimesInCity(city).then(function (data) {
+                    var res1 = data.data.aggregations.crime_histograms.buckets; //jshint ignore:line
+                    //var res1="ciao";
+                    return res1;
+                });
+                return res;
+            };
+
+
+            $scope.init = function () {
+                // $scope.aggregateTotalCrimesInCity("Bari");
+                // $scope.aggregateTotalNewsInCity("Bari");
+                //$scope.aggregateTopCrimesInCity("Bari");
+                //$scope.aggregateTopJournalsInCity('Bari');
+            };
     }]);
