@@ -3,9 +3,19 @@
         <form action="" class="form">
             <div class="form-group">
                 <div class="input-group">
-                    <input class="form-control" type="email" placeholder="Digita il nome di una città....">
-                    <div class="input-group-addon"><i class="fa fa-search" style="cursor: pointer" title="Avvia la ricerca"></i>
-                    </div>
+                    <!--input class="form-control" type="text" placeholder="Digita il nome di una città...."  ng-model="city" >
+                    <div class="input-group-addon"><i class="fa fa-search" style="cursor: pointer" title="Avvia la ricerca" ng-click="searchCrimes()"></i>
+                    </div-->
+                    <input type="text" class="form-control" id="search_box" placeholder="Digita il nome di una città"
+                           ng-autocomplete ng-model="search.result" details="search.details" options="search.options" >
+
+                    {{search.details.geometry.location}}
+
+                <span class="input-group-btn">
+                    <button class="btn btn-defaultn greenBotton" type="submit" ng-click="searchCrimes()"><span
+                            class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
                 </div>
             </div>
         </form>
@@ -19,7 +29,7 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                          Filtra per crimine
+                            Filtra per crimine
                         </a>
                     </h4>
                 </div>
@@ -48,6 +58,7 @@
                                 </label>
                             </div>
                         </div>
+                        Bari
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                             <div class="checkbox">
                                 <label>
