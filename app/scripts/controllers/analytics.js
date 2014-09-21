@@ -191,14 +191,28 @@ angular.module('wheretoliveApp')
 
 
         $scope.aggregateTotalCrimesInCity = function (city) {
-            var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
-                var res1 = data.data.aggregations.crimes_count.buckets;
-                console.log("aggregateTotalCrimesInCity res", res1);
-                return res1;
+             var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
+                    var res1 = data.data.aggregations.crimes_count.buckets;
+                    console.log("aggregateTotalCrimesInCity res", res1);
+                    var i = 0;
+                    var x = new Array();
+                    var y = new Array();
+                    for (i = 0; i < res1.length; i++) {
+                        x.push(res1[i].key);
+                        y.push(res1[i].doc_count);
+                    }
+                    $scope.topCrime.series = x;
+                    $scope.topCrime.data = [{
+                        x: "Top Crimini",
+                        y: y
+                    }];
+                    $scope.topCrimeAggregateNumber = res1.length;
+                    console.log('topCrime', $scope.topCrime);
+                    return res1;
 
 
-            });
-            return res;
+                });
+                return res;
         };
 
         $scope.aggregateTotalNewsInCity = function (city) {
