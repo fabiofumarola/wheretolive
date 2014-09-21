@@ -1,6 +1,21 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        Searchbar
+        <form action="" class="form">
+            <div class="form-group">
+                <div class="input-group">
+                    <!--input class="form-control" type="text" placeholder="Digita il nome di una città...."  ng-model="city" >
+                    <div class="input-group-addon"><i class="fa fa-search" style="cursor: pointer" title="Avvia la ricerca" ng-click="searchCrimes()"></i>
+                    </div-->
+                    <input type="text" class="form-control" id="search_box" placeholder="Digita il nome di una città" ng-autocomplete ng-model="search.result" details="search.details" options="search.options">
+
+                    <span class="input-group-btn">
+                    <button class="btn btn-defaultn greenBotton" type="submit" ng-click="showAnalytics(search.details)"><span
+                            class="glyphicon glyphicon-search"></span>
+                    </button>
+                    </span>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <div class="row">

@@ -8,9 +8,12 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-<<<<<<< HEAD
     .controller('AnalyticsCtrl', ['$scope',
         function ($scope) {
+
+            $scope.showAnalytics = function(city){
+                console.log(city);
+            };
 
             $scope.newspapers = [
                 {
@@ -182,21 +185,11 @@ angular.module('wheretoliveApp')
                 preserve: true,
             };
 
-  }]);
-=======
-    .controller('AnalyticsCtrl', ['$scope', 'Search', function ($scope, Search) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
-
-
-        $scope.aggregateTotalCrimesInCity = function (city) {
+            $scope.aggregateTotalCrimesInCity = function (city) {
             var res = Search.aggregateTotalCrimesInCity(city).then(function (data) {
                 console.log(data);
                 $scope.newsArray = data.data.aggregations.crimes_count.buckets;
-                console.log("Array", $scope.newsArray);
+                console.log('Array', $scope.newsArray);
                 // setMarkersNews($scope.newsArray);
 
 
@@ -207,7 +200,7 @@ angular.module('wheretoliveApp')
             var res = Search.aggregateTotalNewsInCity(city).then(function (data) {
                 console.log(data);
                 $scope.newsArray = data.data.aggregations.crimes_count.buckets;
-                console.log("Array", $scope.newsArray);
+                console.log('Array', $scope.newsArray);
                 // setMarkersNews($scope.newsArray);
 
 
@@ -228,5 +221,5 @@ angular.module('wheretoliveApp')
         $scope.init = function () {
             $scope.aggregateTotalCrimesInCity("Bari");
         };
-    }]);
->>>>>>> 782970bbe8b55be4cbe502b7cdfbab615cffa8f0
+
+  }]);
