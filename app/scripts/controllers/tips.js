@@ -8,10 +8,10 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-  .controller('TipsCtrl', function ($scope) {
+  .controller('TipsCtrl', ['$scope',function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+  }]);

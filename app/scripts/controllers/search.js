@@ -8,10 +8,10 @@
  * Controller of the wheretoliveApp
  */
 angular.module('wheretoliveApp')
-  .controller('SearchCtrl', function ($scope) {
+  .controller('SearchCtrl', ['$scope',function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+  }]);
