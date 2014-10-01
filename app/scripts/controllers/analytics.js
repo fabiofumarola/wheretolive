@@ -97,10 +97,11 @@ angular.module('wheretoliveApp')
                 },
                 hover: {
                         xFormatter: function(x) {
-                            return 'Istante temporale' + x;
+                            var d = new Date(x)
+                            return 'Data ' + d.toISOString().split("T")[0];
                         },
                         yFormatter: function(y) {
-                            return 'Numero di documenti che ne parlano' + y;
+                            return 'numero ' + y;
                         }
                     }
             };
